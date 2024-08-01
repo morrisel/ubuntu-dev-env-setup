@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#
+# 02. Install gcc/g++ compiler:
+# -----------------------------
+#
+# $ sudo apt install build-essential
+#
+
+##### 02. Install gcc/g++ compiler and some utilities: ############################################
+
+# Install basic utilites:
+echo "Install vim"
+sudo apt install vim
+echo
+sleep 1
+
+echo "Install htop"
+sudo apt install htop
+echo
+sleep 1
+
+echo "Install tree"
+sudo apt install tree
+echo
+sleep 1
+
+# sudo apt install tilde
+echo "Install curl"
+sudo apt install curl -y
+echo
+sleep 1
+

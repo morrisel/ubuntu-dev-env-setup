@@ -1,0 +1,23 @@
+#!/bin/bash
+
+
+# 01. Enable Root User (Super User):
+# ----------------------------------
+# 
+# if dont work "su -"
+# $ su -
+# Password:
+# su: Authentication failure
+# 
+# Enable super user account password
+# $ sudo passwd root
+# [sudo] password for ramesh:
+# Enter new UNIX password:
+# Retype new UNIX password:
+# passwd: password updated successfully
+
+
+echo "Enable root user "
+su -
+echo
+sleep 1

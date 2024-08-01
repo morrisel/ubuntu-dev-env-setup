@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# Install coreutils-9.0:
+# ----------------------
+# Advanced Copy – Add Progress Bar To cp And mv Commands In Linux
+
+echo "Install coreutils-9.0"
+echo "---------------------"
+echo "Advanced Copy – Add Progress Bar To cp And mv Commands In Linux"
+echo
+sleep 1
+
+# 1. Download coreutils-9.0.tar.xz from
+# $ wget https://ftp.gnu.org/gnu/coreutils/coreutils-9.0.tar.xz
+echo "Try to download the coreutils-9.0.tar.xz from https://ftp.gnu.org/gnu/coreutils/coreutils-9.0.tar.xz"
+wget https://ftp.gnu.org/gnu/coreutils/coreutils-9.0.tar.xz
+echo
+sleep 1
+
+# 2. Extract the downloaded archive using command:
+# $ tar xvJf coreutils-9.0.tar.xz
+#
+# 3. This command will extract coreutils archive in a folder named coreutils-9.0 in the current directory. Cd into it:
+# $ cd coreutils-9.0/
+#
+# 4. Download the Advanced Copy patch using the following command:
+# $ wget https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.9-9.0.patch
+#
+# 5. Finally, apply the patch by running the following commands one by one:
+# $ patch -p1 -i advcpmv-0.9-9.0.patch
+#
+# 6. Setup and configure after installation
+# $ ./configure
+# $ make
+#
+# 7. Now two new patched binaries namely cp and mv will be created in the coreutils-9.0/src folder. Just copy them to yo     ur $PATH like below:
+# $ sudo cp src/cp /usr/local/bin/cp
+# $ sudo cp src/mv /usr/local/bin/mv
+#
+# That’s it. The cp and mv commands have progress bar functionality now.
+# Whenever you want a progress bar while copying or moving files and directories, just add -g flag like below:
+#
+# $ cp -g archlinux.iso mydownload/
+# Or use --progress-bar flag:
+# $ cp --progress-bar archlinux.iso mydownload/
+# Sample output:
+# Copying at  25.7 MiB/s (about 0h 0m 1s remaining)
+# archlinux.iso 568.1 MiB / 646.0 MiB
+# [=========================================================================> ] 87.9 %
+#
+# At the end of the copy process, you will see how many files were copied, how long it took to copy the file(s), and the      data transfer rate per second. Nice, isn’t?
+# 1 files (646.0 MiB) copied in 11.8 seconds ( 54.7 MiB/s).
+#
+# To copy a directory and its sub-directories recursively, simply add -R flag:
+# $ cp -gR directory1/ directory2/
+#
+# Similarly, to move files using mv command, run:
+# $ mv -g archlinux.iso mydownload/
+#
+# Or, use --progress-bar flag:
+# $ mv --progress-bar archlinux.iso mydownload/
+#
+# To move directories with mv command, use:
+# $ mv -g directory1/ directory2/
+#
+# 8. You can also create aliases to save a few key strokes. To do so, edit ~/.bashrc file:
+# $ nano ~/.bashrc
+#    Add the following lines at the end:
+#       alias cp='/usr/local/bin/cp -gR'
+#       alias mv='/usr/local/bin/mv -g'
+# Press Ctrl+o and Ctl+x to save and close the file.
+#
+# 9. Now run the following command to take effect the changes:
+# $ source ~/.bashrc
+#
