@@ -1,0 +1,223 @@
+#!/bin/bash
+
+echo "______________________________________________________________________________"
+echo "### 06. Install JDK17: #######################################################"
+
+echo "Step 1: Installing dependency packge"
+sudo apt install libc6-i386 libc6-x32 curl -y
+sleep 1
+
+echo "Step 2: Download jdk-17"
+curl -O https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz
+#curl -O https://download.oracle.com/java/17/archive/jdk-17_linux-x64_bin.tar.gz
+
+# If you want to download to a remote server or if you simply prefer wget, use the following command:
+# $ wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/ java/17/latest/jdk-17_linux-x64_bin.tar.gz
+sleep 1
+
+echo "Step 3: Create directory (jdk/jdk17/) for jdk-17"
+mkdir -p jdk/jdk17
+sleep 1
+
+echo "Step 4: Extract the jdk-Xxx-linux-xXX.tar.gz file in that (jdk/jdk17.0.0/) directory"
+tar -xvzf jdk-17_linux-x64_bin.tar.gz -C jdk/jdk17/ --strip=1
+sleep 1
+
+echo "Step 5: Move the extracted archive directory into the /opt/ location"
+echo "Move the jdk/jdk-17.{version} directory that include the jdk-17.{version} into /opt/ location"
+sudo mv -v jdk/ /opt/
+# or
+# $sudo mv jdk/ /usr/lib/jvm/jdk17.0.0
+sleep 1
+
+echo "Step 6: Configure and Install Java 17"
+sudo update-alternatives --install "/usr/bin/java" "java" "/opt/jdk/jdk17/bin/java" 0
+sudo update-alternatives --install "/usr/bin/javac" "javac" "/opt/jdk/jdk17/bin/javac" 0
+# or
+# $ sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk17.0.0/bin/java" 0
+# $ sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk17.0.0/bin/javac" 0
+sleep 1
+
+echo "Step 7: Entering the following commands to inform the system about the Java's location."
+echo "        Depending on your JDK version, the paths can be different."
+echo "        Setting java and javac path to the environment:"
+sudo update-alternatives --set java /opt/jdk/jdk17/bin/java
+sudo update-alternatives --set javac /opt/jdk/jdk17/bin/javac
+# or
+# $ sudo update-alternatives --set java /usr/lib/jvm/jdk17.0.0/bin/java
+# $ sudo update-alternatives --set javac /usr/lib/jvm/jdk17.0.0/bin/javac
+sleep 1
+
+echo "Step 8: To verify the setup enter the following commands and make sure"
+echo "        that they print the location of java and javac as you have provided in the previous step."
+update-alternatives --list java
+update-alternatives --list javac
+sleep 1
+
+echo "Step 7: Set the environment variables"
+export JAVA_HOME=/opt/jdk/jdk17
+export PATH=$PATH:$JAVA_HOME/bin
+# or
+# $ export JAVA_HOME=/usr/lib/jvm/jdk17.0.0
+# $ export PATH=$PATH:$JAVA_HOME/bin
+sleep 1
+
+echo "Step 8: Set Environment Variables into /etc/profile or ~/.profile"
+echo "        The environment variables added to the ~/.profile"
+FILE_NAME=~/my.profile
+echo "" >> $FILE_NAME
+echo "# Java 17" >> $FILE_NAME
+echo 'JAVA_HOME=/opt/jdk/jdk17' >> $FILE_NAME
+echo 'PATH=$PATH:$HOME/bin:$JAVA_HOME/bin' >> $FILE_NAME
+echo 'export JAVA_HOME' >> $FILE_NAME
+echo 'export PATH' >> $FILE_NAME
+
+echo "The environment variables added into to the ~/.profile"
+echo "The file $FILE_NAME was updated!"
+sleep 2
+
+echo "Restart the computer (or just log-out and login) and open the terminal again. "
+echo "Enter the following command. "
+echo ""
+echo "Java 17 is now installed. To confirm, use the following commands: "
+echo ""
+echo "For print export attribute for shell variables. "
+echo '$ export -p '
+echo ""
+echo '$ java --version' 
+echo '$ echo $JAVA_HOME'
+echo ""
+echo "If installed correctly, you should see the following output: "
+echo ""
+echo "$ java 17 2021-09-14 LTS "
+echo "$ Java(TM) SE Runtime Environment (build 17+35-LTS-2724) "
+echo "$ Java HotSpot(TM) 64-Bit Server VM (build 17+35-LTS-2724, mixed mode, sharing) "
+echo ""
+echo "As you can see, you can see the version is the latest Java 17 JDK build. "
+
+
+
+
+# -----------------------------------------------------------------------------------
+# Test Java – Create Hello World Application:
+#
+# To finish off, it is always handy to test installations of these kinds
+# to confirm everything is working correctly after being installed.
+# The easy way is to create a small program script to test using the famous Hello World.
+#
+# First, create the Java program file as follows
+#
+# $ nano hello.java
+# Next, add the following Java code into the file:
+#
+# $ public class hello {
+# $   public static void main(String[] args) {
+# $     System.out.println("Hello World!");
+# $   }
+# $ }
+# Save the file (CTRL+O), then exit (CTRL+X).
+#
+# Next, compile the code:
+#
+# $ javac hello.java
+# Finally, run the Java code with the following command:
+#
+# $ java hello
+#
+# Example output:
+# How to Install Oracle Java 17 LTS (JDK 17) on Ubuntu 20.04
+#
+# Congratulations, everything is working correctly.
+
+
+
+
+# Set Environment Variables into /etc/profile (need to be a root) or ~/.profile
+# Scroll down by pressing Page Down button and add at the end of this file:
+#     # Java 17
+#     JAVA_HOME=/opt/jdk17.0.0
+#            or /usr/lib/jvm/jdk17.0.0
+#     PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+#     export JAVA_HOME
+#     export PATH
+# 
+# $ sudo nano /etc/profile
+#     # /etc/profile: system-wide .profile file for the Bourne shell (sh(1))
+#     # and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).
+# 
+#     if [ "${PS1-}" ]; then
+#       if [ "${BASH-}" ] && [ "$BASH" != "/bin/sh" ]; then
+#         # The file bash.bashrc already sets the default PS1.
+#         # PS1='\h:\w\$ '
+#         if [ -f /etc/bash.bashrc ]; then
+#           . /etc/bash.bashrc
+#         fi
+#       else
+#         if [ "`id -u`" -eq 0 ]; then
+#           PS1='# '
+#         else
+#           PS1='$ '
+#         fi
+#       fi
+#     fi
+# 
+#     if [ -d /etc/profile.d ]; then
+#       for i in /etc/profile.d/*.sh; do
+#         if [ -r $i ]; then
+#           . $i
+#         fi
+#       done
+#       unset i
+#     fi
+# 
+#     # Java 17
+#     JAVA_HOME=/opt/jdk17.0.0
+#     PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+#     export JAVA_HOME
+#     export PATH
+# or
+# $ sudo nano .profile
+#     # ~/.profile: executed by the command interpreter for login shells.
+#     # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+#     # exists.
+#     # see /usr/share/doc/bash/examples/startup-files for examples.
+#     # the files are located in the bash-doc package.
+# 
+#     # the default umask is set in /etc/profile; for setting the umask
+#     # for ssh logins, install and configure the libpam-umask package.
+#     #umask 022
+# 
+#     # if running bash
+#     if [ -n "$BASH_VERSION" ]; then
+#         # include .bashrc if it exists
+#         if [ -f "$HOME/.bashrc" ]; then
+#         . "$HOME/.bashrc"
+#         fi
+#     fi
+# 
+#     # set PATH so it includes user's private bin if it exists
+#     if [ -d "$HOME/bin" ] ; then
+#         PATH="$HOME/bin:$PATH"
+#     fi
+# 
+#     # set PATH so it includes user's private bin if it exists
+#     if [ -d "$HOME/.local/bin" ] ; then
+#         PATH="$HOME/.local/bin:$PATH"
+#     fi
+# 
+# 
+#     # Java 17
+#     JAVA_HOME=/usr/lib/jvm/jdk17.0.0
+#     PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+#     export JAVA_HOME
+#     export PATH
+
+
+
+
+
+
+
+
+
+
