@@ -1,10 +1,8 @@
 #!/bin/bash
 
-#  18 ___________________________________________________________________________________________________
-#  19 ##### 02. Install gcc/g++ compiler and some utilities: ############################################
-#  20 
-#  21 $ sudo apt install build-essential
-
+echo "_______________________________________________________________________________"
+echo "### 01. Install gcc/g++ compiler: #############################################"
+sleep 1
 echo "Install GCC compiler"
 sudo apt install build-essential
 echo
