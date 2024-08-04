@@ -1,8 +1,5 @@
 #!/bin/bash 
 
-# Сохраняем PID родительского процесса
-parent_pid=$$
-
 # Install coreutils-9.0:
 # ----------------------
 # Advanced Copy – Add Progress Bar To cp And mv Commands In Linux
