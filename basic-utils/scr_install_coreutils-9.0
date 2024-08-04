@@ -1,42 +1,55 @@
-#!/bin/bash
+#!/bin/bash 
+
+# Сохраняем PID родительского процесса
+parent_pid=$$
 
 # Install coreutils-9.0:
 # ----------------------
 # Advanced Copy – Add Progress Bar To cp And mv Commands In Linux
-
-echo "Install coreutils-9.0"
-echo "---------------------"
-echo "Advanced Copy – Add Progress Bar To cp And mv Commands In Linux"
-echo
-sleep 1
-
-# 1. Download coreutils-9.0.tar.xz from
-# $ wget https://ftp.gnu.org/gnu/coreutils/coreutils-9.0.tar.xz
-echo "Try to download the coreutils-9.0.tar.xz from https://ftp.gnu.org/gnu/coreutils/coreutils-9.0.tar.xz"
+echo "Downloading and extracting coreutils-9.0"
+echo "----------------------------------------"
+echo "Step 1."
 wget https://ftp.gnu.org/gnu/coreutils/coreutils-9.0.tar.xz
-echo
 sleep 1
 
-# 2. Extract the downloaded archive using command:
-# $ tar xvJf coreutils-9.0.tar.xz
-#
-# 3. This command will extract coreutils archive in a folder named coreutils-9.0 in the current directory. Cd into it:
-# $ cd coreutils-9.0/
-#
-# 4. Download the Advanced Copy patch using the following command:
-# $ wget https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.9-9.0.patch
-#
-# 5. Finally, apply the patch by running the following commands one by one:
-# $ patch -p1 -i advcpmv-0.9-9.0.patch
-#
-# 6. Setup and configure after installation
-# $ ./configure
-# $ make
+echo "Step 2."
+tar xvJf coreutils-9.0.tar.xz
+sleep 1
+
+echo "Step 3."
+cd coreutils-9.0
+sleep 1
+
+echo 'Step 4.'
+wget https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.9-9.0.patch
+sleep 1
+
+echo 'Step 5.'
+patch -p1 -i advcpmv-0.9-9.0.patch
+sleep 1
+
+## Install coreutils-9.0:
+## ----------------------
+echo "Configure and setting up"
+echo "------------------------"
+echo "Step 6. Setup and configure after installation"
+./configure
+make
+sleep 1
+
 #
 # 7. Now two new patched binaries namely cp and mv will be created in the coreutils-9.0/src folder. Just copy them to yo     ur $PATH like below:
-# $ sudo cp src/cp /usr/local/bin/cp
-# $ sudo cp src/mv /usr/local/bin/mv
-#
+echo "Step 7. Copying new patched cp and mv to /usr/local/bin/ directory"
+sudo cp src/cp /usr/local/bin/cp
+sudo cp src/mv /usr/local/bin/mv
+sleep 1
+
+echo "The installation finished"
+echo "coreutils-9.0 configuring"
+sleep 1
+
+#echo "How to use"
+
 # That’s it. The cp and mv commands have progress bar functionality now.
 # Whenever you want a progress bar while copying or moving files and directories, just add -g flag like below:
 #
