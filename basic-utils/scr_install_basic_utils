@@ -3,9 +3,8 @@
 # 02. Install basic utils:
 # ------------------------
 
-echo "Install basic utilites:"
-echo "-----------------------"
-echo
+echo "_______________________________________________________________________________"
+echo "### 02. Install basic utilites: ###############################################"
 
 echo "Install vim"
 sudo apt install vim
