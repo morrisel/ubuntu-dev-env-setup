@@ -16,9 +16,8 @@
 # Retype new UNIX password:
 # passwd: password updated successfully
 
-
-echo "Enable root user (Super User)"
-echo "-----------------------------"
+echo "_______________________________________________________________________________"
+echo "### 01. Enable Root User (Super User): ########################################"
 echo
 
 su -
