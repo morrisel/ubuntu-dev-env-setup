@@ -4,7 +4,7 @@
 # ----------------------
 # Advanced Copy – Add Progress Bar To cp And mv Commands In Linux
 echo "_______________________________________________________________________________"
-echo "### 01. Install coreutils-9.0: ################################################"
+echo "### 05. Install coreutils-9.0: ################################################"
 sleep 1
 echo "Downloading and extracting coreutils-9.0"
 echo "----------------------------------------"
