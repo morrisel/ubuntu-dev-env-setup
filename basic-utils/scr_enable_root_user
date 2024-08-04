@@ -4,7 +4,7 @@
 # 01. Enable Root User (Super User):
 # ----------------------------------
 # 
-# if dont work "su -"
+# If dont work "su -"
 # $ su -
 # Password:
 # su: Authentication failure
@@ -17,7 +17,10 @@
 # passwd: password updated successfully
 
 
-echo "Enable root user "
+echo "Enable root user (Super User)"
+echo "-----------------------------"
+echo
+
 su -
 echo
 sleep 1
