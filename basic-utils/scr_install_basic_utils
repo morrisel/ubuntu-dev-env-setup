@@ -1,15 +1,12 @@
 #!/bin/bash
 
-#
-# 02. Install gcc/g++ compiler:
-# -----------------------------
-#
-# $ sudo apt install build-essential
-#
+# 02. Install basic utils:
+# ------------------------
 
-##### 02. Install gcc/g++ compiler and some utilities: ############################################
+echo "Install basic utilites:"
+echo "-----------------------"
+echo
 
-# Install basic utilites:
 echo "Install vim"
 sudo apt install vim
 echo
