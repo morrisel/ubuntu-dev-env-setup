@@ -27,8 +27,8 @@ sleep 1
 
 ## Install coreutils-9.0:
 ## ----------------------
-echo "Configure and setting up"
-echo "------------------------"
+echo "Install configure and setting up"
+echo "--------------------------------"
 echo "Step 6. Setup and configure after installation"
 ./configure
 make
