@@ -1,0 +1,35 @@
+#!/bin/bash
+#----------
+
+PROTOCOL="https"
+HOSTNAME="www.morfix.co.il"
+WORD="${1}"
+URL="${PROTOCOL}://${HOSTNAME}"
+DIV_TAG="normal_translation_div"
+
+# Color output
+# ------------
+# ANSI escape sequence for yellow color
+YELLOW="\e[93m"
+# ANSI escape sequence for resetting color
+RESET="\e[0m"
+
+
+if [ -z "${WORD}" ]; then
+    echo "Usage: scr_cli_morfix_translator {insert a word}"
+    exit 1
+fi
+
+TRANSLATION=`curl -s ${URL}/${WORD} | grep -A1 ${DIV_TAG} | grep / | cut -d"<" -f1`
+
+echo -e "${YELLOW}${TRANSLATION}${RESET}"
+
+if [ -z "${TRANSLATION}" ]; then
+    echo "Translation not found"
+    exit 1
+fi
+
+
+
+# EOF
+
