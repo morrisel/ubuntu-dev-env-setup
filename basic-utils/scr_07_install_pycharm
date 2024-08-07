@@ -1,11 +1,12 @@
 #!/bin/bash
 
-VERSION='2021.3.2'
+# Set the version of PyCharm you want to install
+VERSION="2021.3.2"
 
 echo "______________________________________________________________________________"
 echo "### 07. Install PyCharm: #####################################################"
 
-echo "Step 1: Download PyCharm"
+echo "Step 1: Download PyCharm $VERSION"
 curl -O https://download-cdn.jetbrains.com/python/pycharm-community-$VERSION.tar.gz
 sleep 1
 
@@ -22,29 +23,29 @@ sudo mv -v pycharm /opt/
 sleep 1
 
 echo "Step 5: Create PyCharm launcher and Desktop shortcut"
-echo "        Creating... Pycharm.desktop file"
-touch ~/Desktop/Pycharm.desktop
-echo "        Setup the file"
+echo "        Creating PyCharm.desktop file"
+touch ~/Desktop/PyCharm.desktop
+echo "        Setup up the file"
 
-echo "[Desktop Entry]"                    >  ~/Desktop/Pycharm.desktop
-echo "Version=1.0                       " >> ~/Desktop/Pycharm.desktop
-echo "Name=PyCharm                      " >> ~/Desktop/Pycharm.desktop
-echo "GenericName=PyCharm               " >> ~/Desktop/Pycharm.desktop
-echo "Comment=Python IDE                " >> ~/Desktop/Pycharm.desktop
-echo "Exec=/opt/pycharm/bin/./pycharm.sh" >> ~/Desktop/Pycharm.desktop
-echo "Icon=/opt/pycharm/bin/pycharm.png " >> ~/Desktop/Pycharm.desktop
-echo "Terminal=false                    " >> ~/Desktop/Pycharm.desktop
-echo "Type=Application                  " >> ~/Desktop/Pycharm.desktop
-echo "        The Pycharm.desktop launcher file was created"
+echo "[Desktop Entry]"                    >  ~/Desktop/PyCharm.desktop
+echo "Version=1.0                       " >> ~/Desktop/PyCharm.desktop
+echo "Name=PyCharm                      " >> ~/Desktop/PyCharm.desktop
+echo "GenericName=PyCharm               " >> ~/Desktop/PyCharm.desktop
+echo "Comment=Python IDE                " >> ~/Desktop/PyCharm.desktop
+echo "Exec=/opt/pycharm/bin/./pycharm.sh" >> ~/Desktop/PyCharm.desktop
+echo "Icon=/opt/pycharm/bin/pycharm.png " >> ~/Desktop/PyCharm.desktop
+echo "Terminal=false                    " >> ~/Desktop/PyCharm.desktop
+echo "Type=Application                  " >> ~/Desktop/PyCharm.desktop
+echo "        The PyCharm.desktop launcher file was created"
 sleep 1
 
 echo "# Made Desktop shortcut executable:"
 echo "Right-click on the desktop shortcut and select “Allow launching”"
-echo "Desktop ShortcutPycharm Application Launcher shortcut Install Pycharm IDE on Ubuntu 20.04 LTS"
 echo ""
 sleep 1
 
-echo "Step 6: Copying the Shortcut to Applications launcher folder as well."
+echo "Step 6: Copying the Shortcut to the Applications launcher folder as well."
+echo "        Copying Pycharm.desktop to /usr/share/applications/"
 echo "        $ sudo cp ~/Desktop/Pycharm.desktop /usr/share/applications/"
 echo "        $ sudo cp ~/Desktop/Pycharm.desktop /usr/local/share/applications/"
 sudo cp ~/Desktop/Pycharm.desktop /usr/share/applications/Pycharm.desktop
@@ -59,15 +60,13 @@ mkdir -p .config/JetBrains/PyCharmCE2021.3
 echo "        Creating the file idea.properties into created directory"
 touch .config/JetBrains/PyCharmCE2021.3/idea.properties
 
-echo "         Configure the file idea.properties"
-echo "                  copy links into new idea.properties file"
-echo "                  $ idea.system.path=~/pycharm/system"
-echo "                  $ idea.config.path=~/pycharm/config"
+echo "         Configuring the file idea.properties"
+echo "                  Copying links into the new idea.properties file"
+echo "                  idea.system.path=~/pycharm/system"
+echo "                  idea.config.path=~/pycharm/config"
 echo
-echo "                       idea.system.path=~/custom/system"
-echo "                       idea.config.path=~/custom/config"
-echo
-echo "         Inserting these links to the idea.properties file"
+echo "                  #     idea.system.path=~/custom/system"
+echo "                  #     idea.config.path=~/custom/config"
 echo "idea.system.path=~/pycharm/system   " >  ~/.config/JetBrains/PyCharmCE2021.3/idea.properties 
 echo "idea.config.path=~/pycharm/config   " >> ~/.config/JetBrains/PyCharmCE2021.3/idea.properties 
 echo "                                    " >> ~/.config/JetBrains/PyCharmCE2021.3/idea.properties 
@@ -76,7 +75,5 @@ echo "#   idea.config.path=~/custom/config" >> ~/.config/JetBrains/PyCharmCE2021
 sleep 1
 echo
 echo "The PyCharm was configured successfuly!"
-echo
 echo "~ Respect! ~"
-
-
+echo

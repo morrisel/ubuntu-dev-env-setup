@@ -71,7 +71,7 @@ echo 'export PATH' >> $PROFILE_NAME
 
 echo "The environment variables added into to the ~/.profile"
 echo "The file $PROFILE_NAME was updated!"
-sleep 2
+sleep 1
 
 echo "Restart the computer (or just log-out and login) and open the terminal again. "
 echo "Enter the following command. "
