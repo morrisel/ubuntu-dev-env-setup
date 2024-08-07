@@ -6,25 +6,26 @@
 echo "_______________________________________________________________________________"
 echo "### 05. Install coreutils-9.0: ################################################"
 sleep 1
+
 echo "Downloading and extracting coreutils-9.0"
 echo "----------------------------------------"
-echo "Step 1."
+echo "Step 1. Download the coreutils-9.0"
 wget https://ftp.gnu.org/gnu/coreutils/coreutils-9.0.tar.xz
 sleep 1
 
-echo "Step 2."
+echo "Step 2. Extract coreutils-9.0"
 tar xvJf coreutils-9.0.tar.xz
 sleep 1
 
-echo "Step 3."
+echo "Step 3. cd into coreutils-9.0"
 cd coreutils-9.0
 sleep 1
 
-echo 'Step 4.'
+echo "Step 4. Download the advcpmv-0.9-9.0.patch"
 wget https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.9-9.0.patch
 sleep 1
 
-echo 'Step 5.'
+echo "Step 5. Apply the advcpmv patch to coreutils-9.0"
 patch -p1 -i advcpmv-0.9-9.0.patch
 sleep 1
 
@@ -45,44 +46,7 @@ sudo cp src/mv /usr/local/bin/mv
 sleep 1
 
 echo "The installation finished"
-echo "coreutils-9.0 configuring"
+echo "coreutils-9.0 configured"
 sleep 1
+echo
 
-#echo "How to use"
-
-# That’s it. The cp and mv commands have progress bar functionality now.
-# Whenever you want a progress bar while copying or moving files and directories, just add -g flag like below:
-#
-# $ cp -g archlinux.iso mydownload/
-# Or use --progress-bar flag:
-# $ cp --progress-bar archlinux.iso mydownload/
-# Sample output:
-# Copying at  25.7 MiB/s (about 0h 0m 1s remaining)
-# archlinux.iso 568.1 MiB / 646.0 MiB
-# [=========================================================================> ] 87.9 %
-#
-# At the end of the copy process, you will see how many files were copied, how long it took to copy the file(s), and the      data transfer rate per second. Nice, isn’t?
-# 1 files (646.0 MiB) copied in 11.8 seconds ( 54.7 MiB/s).
-#
-# To copy a directory and its sub-directories recursively, simply add -R flag:
-# $ cp -gR directory1/ directory2/
-#
-# Similarly, to move files using mv command, run:
-# $ mv -g archlinux.iso mydownload/
-#
-# Or, use --progress-bar flag:
-# $ mv --progress-bar archlinux.iso mydownload/
-#
-# To move directories with mv command, use:
-# $ mv -g directory1/ directory2/
-#
-# 8. You can also create aliases to save a few key strokes. To do so, edit ~/.bashrc file:
-# $ nano ~/.bashrc
-#    Add the following lines at the end:
-#       alias cp='/usr/local/bin/cp -gR'
-#       alias mv='/usr/local/bin/mv -g'
-# Press Ctrl+o and Ctl+x to save and close the file.
-#
-# 9. Now run the following command to take effect the changes:
-# $ source ~/.bashrc
-#

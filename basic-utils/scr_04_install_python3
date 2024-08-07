@@ -3,11 +3,18 @@
 echo "_______________________________________________________________________________"
 echo "### 04. Install Python3: ######################################################"
 
+echo "Install python3-pip"
 sudo apt install python3-pip
+sleep 1
+
+echo "Install python3-tk"
 sudo apt install python3-tk
+sleep 1
 
-sudo apt install python3 python3-pip python3-tk
+#sudo apt install python3 python3-pip python3-tk
 
-echo "check if tkinter works:"
+echo "Check if tkinter works:"
 python3 -c "import tkinter"
-
+echo "Done!"
+sleep 1
+echo
