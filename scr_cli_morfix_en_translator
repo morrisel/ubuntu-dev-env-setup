@@ -1,9 +1,10 @@
 #!/bin/bash
 #----------
 
+
+FILENAME="`basename ${0}`"
 PROTOCOL="https"
 HOSTNAME="www.morfix.co.il"
-WORD="${1}"
 URL="${PROTOCOL}://${HOSTNAME}"
 DIV_TAG="normal_translation_div"
 
@@ -15,21 +16,22 @@ YELLOW="\e[93m"
 RESET="\e[0m"
 
 
-if [ -z "${WORD}" ]; then
-    echo "Usage: scr_cli_morfix_translator {insert a word}"
+if [ $# -eq 0 ]; then
+    echo "Usage: ${FILENAME} {insert a word}"
     exit 1
 fi
 
-TRANSLATION=`curl -s ${URL}/${WORD} | grep -A1 ${DIV_TAG} | grep / | cut -d"<" -f1`
+for WORD in "$@"; do
 
-echo -e "${YELLOW}${TRANSLATION}${RESET}"
+    TRANSLATION=$(curl -s "${PROTOCOL}://${HOSTNAME}/${WORD}" | grep -A1 "${DIV_TAG}" | grep / | cut -d"<" -f1 | head -n 1)
 
-if [ -z "${TRANSLATION}" ]; then
-    echo "Translation not found"
-    exit 1
-fi
-
-
+    if [ -z "${TRANSLATION}" ]; then
+        echo "Translation not found"
+        #exit 1
+    else
+        #echo -e "${YELLOW}${TRANSLATION}${RESET}"
+        echo -e "${YELLOW}${WORD}: \t\t ${TRANSLATION}${RESET}"
+    fi
+done
 
 # EOF
-
