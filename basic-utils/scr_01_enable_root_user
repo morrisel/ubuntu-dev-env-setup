@@ -11,7 +11,7 @@
 # 
 # Enable super user account password
 # $ sudo passwd root
-# [sudo] password for ramesh:
+# [sudo] password for [user_name]:
 # Enter new UNIX password:
 # Retype new UNIX password:
 # passwd: password updated successfully

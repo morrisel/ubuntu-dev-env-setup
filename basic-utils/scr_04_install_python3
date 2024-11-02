@@ -13,8 +13,16 @@ sleep 1
 
 #sudo apt install python3 python3-pip python3-tk
 
-echo "Check if tkinter works:"
-python3 -c "import tkinter"
-echo "Done!"
+
+# Verify tkinter installation
+python3 -c "import tkinter; print('tkinter installed successfully')" 2> /dev/null
+
+if [ $? -ne 0 ]; then
+    echo "tkinter installation failed. Please check the installation logs."
+else
+    echo "Python3 and tkinter installed successfully!"
+fi
+
 sleep 1
 echo
+
