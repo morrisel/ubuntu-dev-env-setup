@@ -47,3 +47,7 @@ sleep 1
 echo "The VSCode IDE was configured successfuly!"
 echo "~ Respect! ~"
 echo
+
+# Log to file
+echo `date +'%F_%T'` $0 runned by $USER >> `date +%F`.log
+

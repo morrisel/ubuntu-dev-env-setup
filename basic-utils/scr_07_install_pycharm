@@ -77,3 +77,6 @@ echo
 echo "The PyCharm was configured successfuly!"
 echo "~ Respect! ~"
 echo
+# Log to file
+echo `date +'%F_%T'` $0 runned by $USER >> `date +%F`.log
+

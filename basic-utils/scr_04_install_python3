@@ -26,3 +26,6 @@ fi
 sleep 1
 echo
 
+# Log to file
+echo `date +'%F_%T'` $0 runned by $USER >> `date +%F`.log
+

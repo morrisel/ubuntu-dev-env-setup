@@ -23,3 +23,6 @@ echo
 su -
 echo
 sleep 1
+
+# Log to file
+echo `date +'%F_%T'` $0 runned by $USER >> `date +%F`.log

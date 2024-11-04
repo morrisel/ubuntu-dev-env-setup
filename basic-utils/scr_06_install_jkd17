@@ -96,3 +96,6 @@ echo "The JDK17 was configured successfuly!"
 echo
 echo "~ Respect! ~"
 
+# Log to file
+echo `date +'%F_%T'` $0 runned by $USER >> `date +%F`.log
+

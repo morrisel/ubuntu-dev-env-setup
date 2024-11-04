@@ -6,4 +6,7 @@ sleep 1
 echo "Install GCC compiler"
 sudo apt install build-essential
 sleep 1
-echo "Done!"
+
+# Log to file
+echo `date +'%F_%T'` $0 runned by $USER >> `date +%F`.log
+
