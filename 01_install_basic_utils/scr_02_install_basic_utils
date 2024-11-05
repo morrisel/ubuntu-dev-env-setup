@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# 02. Install basic utils:
+# ------------------------
+
+echo "_______________________________________________________________________________"
+echo "### 02. Install basic utilites: ###############################################"
+
+echo "Install vim"
+sudo apt install vim
+sleep 1
+
+echo "Install htop"
+sudo apt install htop
+sleep 1
+
+echo "Install tree"
+sudo apt install tree
+sleep 1
+
+# sudo apt install tilde
+echo "Install curl"
+sudo apt install curl -y
+sleep 1
+
+# Log to file
+echo `date +'%F_%T'` $0 runned by $USER >> `date +%F`.log
+

@@ -1,0 +1,52 @@
+#!/bin/bash
+
+echo "______________________________________________________________________________"
+echo "### 08. Install Eclipse IDE for Java Developers: #############################"
+
+echo "Step 1: Download The Eclipse IDE"
+wget https://mirror.dkm.cz/eclipse/technology/epp/downloads/release/2021-12/R/eclipse-java-2021-12-R-linux-gtk-x86_64    .tar.gz
+#curl -O https://mirror.dkm.cz/eclipse/technology/epp/downloads/release/2021-12/R/eclipse-java-2021-12-R-linux-gtk-x86    _64.tar.gz
+sleep 1
+
+echo "Step 2: Create directory \'eclipse/\'"
+mkdir eclipse
+sleep 1
+
+echo "Step 3: Extract eclipse-java-2021-12-R-linux-gtk-x86_64.tar.gz to eclipse directory"
+tar -xvzf eclipse-java-2021-12-R-linux-gtk-x86_64.tar.gz -C eclipse --strip=1
+sleep 1
+
+echo "Step 4: Move the extracted archive directory into the /opt/ location"
+sudo mv -v eclipse/ /opt/
+sleep 1
+
+
+echo "Step 5: Create eclipse launcher and Desktop shortcut"
+echo "        Creating eclipse.desktop file"
+touch ~/Desktop/eclipse.desktop
+echo "        Copying and paste the following block of the text into the eclipse.desktop file"
+echo "[Desktop Entry]           " >  ~/Desktop/eclipse.desktop
+echo "Version=1.0               " >> ~/Desktop/eclipse.desktop
+echo "Name=eclipse              " >> ~/Desktop/eclipse.desktop
+echo "GenericName=eclipse       " >> ~/Desktop/eclipse.desktop
+echo "Comment=Eclipse IDE       " >> ~/Desktop/eclipse.desktop
+echo "Exec=/opt/eclipse/eclipse " >> ~/Desktop/eclipse.desktop
+echo "Icon=/opt/eclipse/icon.xpm" >> ~/Desktop/eclipse.desktop
+echo "Terminal=false            " >> ~/Desktop/eclipse.desktop
+echo "Type=Application          " >> ~/Desktop/eclipse.desktop
+sleep 1
+
+echo "Step 6: Copy the Shortcut to Applications launcher folder as well"
+echo "        $ sudo cp ~/Desktop/eclipse.desktop /usr/share/applications/"
+echo "        $ sudo cp ~/Desktop/eclipse.desktop /usr/local/share/applications/"
+sudo cp ~/Desktop/eclipse.desktop /usr/share/applications/eclipse.desktop
+sudo cp ~/Desktop/eclipse.desktop /usr/local/share/applications/eclipse.desktop
+sleep 1
+
+echo "The Eclipse IDE Java Developers was configured successfuly!"
+echo "~ Respect! ~"
+echo
+
+# Log to file
+echo `date +'%F_%T'` $0 runned by $USER >> `date +%F`.log
+

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+
+# 01. Enable Root User (Super User):
+# ----------------------------------
+# 
+# If dont work "su -"
+# $ su -
+# Password:
+# su: Authentication failure
+# 
+# Enable super user account password
+# $ sudo passwd root
+# [sudo] password for [user_name]:
+# Enter new UNIX password:
+# Retype new UNIX password:
+# passwd: password updated successfully
+
+echo "_______________________________________________________________________________"
+echo "### 01. Enable Root User (Super User): ########################################"
+echo
+
+su -
+echo
+sleep 1
+
+# Log to file
+echo `date +'%F_%T'` $0 runned by $USER >> `date +%F`.log
